@@ -7,6 +7,7 @@ At the moment the following functions have been implemented
 - [x] Pipe
 - [x] FromIter
 - [x] ForEach
+- [x] Map
 
 Please take a look at example folder.
 

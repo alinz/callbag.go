@@ -1,0 +1,24 @@
+package callbag
+
+func Map(op func(val interface{}) interface{}) Transform {
+	return func(source Source) Source {
+		return func(p Payload) {
+			switch v := p.(type) {
+			case Greets:
+				sink := v.Source()
+				source(NewGreets(func(p Payload) {
+					switch v := p.(type) {
+					case Greets:
+						sink(v)
+					case Data:
+						sink(NewData(op(v.Value())))
+					case Terminate:
+						sink(NewTerminate(v.Error()))
+					}
+				}))
+			default:
+				return
+			}
+		}
+	}
+}
