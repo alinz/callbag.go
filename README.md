@@ -13,6 +13,7 @@ At the moment the following functions have been implemented
 - [x] Filter
 - [x] Interval
 - [x] Merge
+- [x] Flatten
 
 Please take a look at example folder.
 
