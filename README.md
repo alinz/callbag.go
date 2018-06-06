@@ -17,6 +17,7 @@ At the moment the following functions have been implemented
 - [x] Scan
 - [x] Observe
 - [x] Take
+- [x] PausableInterval
 
 Please take a look at example folder.
 

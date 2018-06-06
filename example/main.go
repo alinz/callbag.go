@@ -1,12 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"time"
-
-	"github.com/alinz/go-callbag"
-)
-
 func main() {
 	// callbag.Pipe(
 	// 	callbag.Interval(1*time.Second),
@@ -83,12 +76,14 @@ func main() {
 
 	//
 
-	callbag.Pipe(
-		callbag.Interval(1*time.Second),
-		callbag.Take(5),
-		callbag.Observe(func(val interface{}) {
-			fmt.Println(val)
-		}),
-	)
+	//
+
+	// callbag.Pipe(
+	// 	callbag.Interval(1*time.Second),
+	// 	callbag.Take(5),
+	// 	callbag.Observe(func(val interface{}) {
+	// 		fmt.Println(val)
+	// 	}),
+	// )
 
 }
