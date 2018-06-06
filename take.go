@@ -1,5 +1,8 @@
 package callbag
 
+// Take is a Callbag operator that limits the amount of data sent by a source.
+// Works on either pullable and listenable sources.
+//
 func Take(max int) Transform {
 	return func(source Source) Source {
 		return func(p Payload) {

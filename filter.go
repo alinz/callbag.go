@@ -1,5 +1,20 @@
 package callbag
 
+// Filter is a Callbag operator that conditionally lets data pass through
+//
+// As an example, the fillowing code print out the event number from 1 to 5
+//
+// 		callbag.Pipe(
+// 			callbag.FromIter(1, 2, 3, 4, 5),
+// 			callbag.Filter(func(val interface{}) bool {
+// 				n := val.(int)
+// 				return n%2 == 0
+// 			}),
+// 			callbag.ForEach(func(val interface{}) {
+// 				fmt.Println(val)
+// 			}),
+// 		)
+//
 func Filter(cond func(val interface{}) bool) Transform {
 	return func(source Source) Source {
 		return func(p Payload) {

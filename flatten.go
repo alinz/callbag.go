@@ -2,6 +2,11 @@ package callbag
 
 import "reflect"
 
+// Flatten is a Callbag operator that flattens a higher-order callbag source.
+// Like RxJS "switch" or xstream "flatten".
+//
+// NOTE: Use it with map to get behavior equivalent to "switchMap"
+//
 func Flatten() Transform {
 	return func(source Source) Source {
 		var sink Source

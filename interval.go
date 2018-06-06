@@ -26,6 +26,8 @@ func setInterval(fn func(), timeout time.Duration) func() {
 	}
 }
 
+// Interval is a callbag listenable source that sends incremental numbers every x period.
+//
 func Interval(period time.Duration) Source {
 	return func(p Payload) {
 		var sink Source
@@ -52,6 +54,12 @@ func Interval(period time.Duration) Source {
 	}
 }
 
+// PausableInterval is a callbag listenable source that sends incremental numbers every x period
+// but can be paused (and resumed) when it is pulled by a sink.
+//
+// NOTE: Don't use forEach directly as the sink for this source, because forEach pulls every time it receives data.
+// You can use this source as the argument for sample, though.
+//
 func PausableInterval(period time.Duration) Source {
 	return func(p Payload) {
 		var sink Source

@@ -1,5 +1,8 @@
 package callbag
 
+// Subject is a A callbag listener sink which is also a listenable source,
+// and maintains an internal list of listeners.
+//
 func Subject() Source {
 	sinks := make([]Source, 0)
 

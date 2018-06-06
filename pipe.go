@@ -4,6 +4,8 @@ import (
 	"reflect"
 )
 
+// Pipe is a utility function for plugging callbags together in chain.
+//
 func Pipe(cbs ...interface{}) Source {
 	var res Source
 
