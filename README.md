@@ -19,6 +19,7 @@ At the moment the following functions have been implemented
 - [x] Take
 - [x] PausableInterval
 - [x] Subject
+- [x] Concat
 
 Please take a look at example folder.
 

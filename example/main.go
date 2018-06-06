@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
-	"time"
 
-	callbag "github.com/alinz/go-callbag"
+	"github.com/alinz/go-callbag"
 )
 
 func main() {
@@ -93,31 +92,47 @@ func main() {
 	// 	}),
 	// )
 
-	subject := callbag.Subject()
+	//
 
-	go func() {
-		callbag.Pipe(
-			subject,
-			callbag.Take(10),
-			callbag.Observe(func(val interface{}) {
-				fmt.Println("event: ", val)
-			}),
-		)
-	}()
+	// subject := callbag.Subject()
 
-	time.Sleep(1 * time.Second)
+	// go func() {
+	// 	callbag.Pipe(
+	// 		subject,
+	// 		callbag.Take(10),
+	// 		callbag.Observe(func(val interface{}) {
+	// 			fmt.Println("event: ", val)
+	// 		}),
+	// 	)
+	// }()
 
-	go func() {
-		for i := 0; i < 100; i++ {
-			subject(callbag.NewData(fmt.Sprintf("Event %d", i)))
-		}
-	}()
+	// time.Sleep(1 * time.Second)
 
-	go func() {
-		for i := 100; i < 200; i++ {
-			subject(callbag.NewData(fmt.Sprintf("Event %d", i)))
-		}
-	}()
+	// go func() {
+	// 	for i := 0; i < 100; i++ {
+	// 		subject(callbag.NewData(fmt.Sprintf("Event %d", i)))
+	// 	}
+	// }()
 
-	time.Sleep(1 * time.Second)
+	// go func() {
+	// 	for i := 100; i < 200; i++ {
+	// 		subject(callbag.NewData(fmt.Sprintf("Event %d", i)))
+	// 	}
+	// }()
+
+	// time.Sleep(1 * time.Second)
+
+	//
+
+	source := callbag.Concat(
+		callbag.FromIter(1, 2, 3, 4, 5),
+		callbag.FromIter("a", "b", "c"),
+	)
+
+	callbag.Pipe(
+		source,
+		callbag.ForEach(func(val interface{}) {
+			fmt.Println(val)
+		}),
+	)
 }
