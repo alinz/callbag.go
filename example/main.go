@@ -1,5 +1,12 @@
 package main
 
+import (
+	"fmt"
+	"time"
+
+	callbag "github.com/alinz/go-callbag"
+)
+
 func main() {
 	// callbag.Pipe(
 	// 	callbag.Interval(1*time.Second),
@@ -86,4 +93,31 @@ func main() {
 	// 	}),
 	// )
 
+	subject := callbag.Subject()
+
+	go func() {
+		callbag.Pipe(
+			subject,
+			callbag.Take(10),
+			callbag.Observe(func(val interface{}) {
+				fmt.Println("event: ", val)
+			}),
+		)
+	}()
+
+	time.Sleep(1 * time.Second)
+
+	go func() {
+		for i := 0; i < 100; i++ {
+			subject(callbag.NewData(fmt.Sprintf("Event %d", i)))
+		}
+	}()
+
+	go func() {
+		for i := 100; i < 200; i++ {
+			subject(callbag.NewData(fmt.Sprintf("Event %d", i)))
+		}
+	}()
+
+	time.Sleep(1 * time.Second)
 }

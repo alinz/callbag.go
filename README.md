@@ -18,6 +18,7 @@ At the moment the following functions have been implemented
 - [x] Observe
 - [x] Take
 - [x] PausableInterval
+- [x] Subject
 
 Please take a look at example folder.
 
