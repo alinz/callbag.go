@@ -74,8 +74,18 @@ func main() {
 
 	//
 
+	// callbag.Pipe(
+	// 	callbag.Interval(1*time.Second),
+	// 	callbag.Observe(func(val interface{}) {
+	// 		fmt.Println(val)
+	// 	}),
+	// )
+
+	//
+
 	callbag.Pipe(
 		callbag.Interval(1*time.Second),
+		callbag.Take(5),
 		callbag.Observe(func(val interface{}) {
 			fmt.Println(val)
 		}),

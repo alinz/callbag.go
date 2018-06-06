@@ -16,6 +16,7 @@ At the moment the following functions have been implemented
 - [x] Flatten
 - [x] Scan
 - [x] Observe
+- [x] Take
 
 Please take a look at example folder.
 
