@@ -14,6 +14,7 @@ At the moment the following functions have been implemented
 - [x] Interval
 - [x] Merge
 - [x] Flatten
+- [x] Scan
 
 Please take a look at example folder.
 
