@@ -8,6 +8,7 @@ At the moment the following functions have been implemented
 - [x] FromIter
 - [x] ForEach
 - [x] Map
+- [x] Filter
 
 Please take a look at example folder.
 
