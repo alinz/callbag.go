@@ -15,6 +15,7 @@ At the moment the following functions have been implemented
 - [x] Merge
 - [x] Flatten
 - [x] Scan
+- [x] Observe
 
 Please take a look at example folder.
 

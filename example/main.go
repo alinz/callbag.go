@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/alinz/go-callbag"
 )
@@ -58,15 +59,24 @@ func main() {
 
 	//
 
-	callbag.Pipe(
-		callbag.FromIter(1, 2, 3, 4, 5),
-		callbag.Scan(func(prev interface{}, curr interface{}) interface{} {
-			a := prev.(int)
-			b := curr.(int)
+	// callbag.Pipe(
+	// 	callbag.FromIter(1, 2, 3, 4, 5),
+	// 	callbag.Scan(func(prev interface{}, curr interface{}) interface{} {
+	// 		a := prev.(int)
+	// 		b := curr.(int)
 
-			return a + b
-		}, 0),
-		callbag.ForEach(func(val interface{}) {
+	// 		return a + b
+	// 	}, 0),
+	// 	callbag.ForEach(func(val interface{}) {
+	// 		fmt.Println(val)
+	// 	}),
+	// )
+
+	//
+
+	callbag.Pipe(
+		callbag.Interval(1*time.Second),
+		callbag.Observe(func(val interface{}) {
 			fmt.Println(val)
 		}),
 	)
