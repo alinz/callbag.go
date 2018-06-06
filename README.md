@@ -9,6 +9,7 @@ At the moment the following functions have been implemented
 - [x] ForEach
 - [x] Map
 - [x] Filter
+- [x] Interval
 
 Please take a look at example folder.
 
