@@ -12,14 +12,15 @@ At the moment the following functions have been implemented
 - [x] Map
 - [x] Filter
 - [x] Interval
+- [x] PausableInterval
 - [x] Merge
 - [x] Flatten
 - [x] Scan
 - [x] Observe
 - [x] Take
-- [x] PausableInterval
 - [x] Subject
 - [x] Concat
+- [x] Combine
 
 Please take a look at example folder.
 
