@@ -139,13 +139,23 @@ func main() {
 
 	//
 
-	source := callbag.Combine(
-		callbag.Interval(100*time.Millisecond),
-		callbag.Interval(350*time.Millisecond),
-	)
+	// source := callbag.Combine(
+	// 	callbag.Interval(100*time.Millisecond),
+	// 	callbag.Interval(350*time.Millisecond),
+	// )
+
+	// callbag.Pipe(
+	// 	source,
+	// 	callbag.Observe(func(val interface{}) {
+	// 		fmt.Println(val)
+	// 	}),
+	// )
+
+	//
 
 	callbag.Pipe(
-		source,
+		callbag.Interval(100*time.Millisecond),
+		callbag.Skip(3),
 		callbag.Observe(func(val interface{}) {
 			fmt.Println(val)
 		}),
