@@ -10,6 +10,7 @@ At the moment the following functions have been implemented
 - [x] Map
 - [x] Filter
 - [x] Interval
+- [x] Merge
 
 Please take a look at example folder.
 

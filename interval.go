@@ -17,7 +17,7 @@ func Interval(period time.Duration) Source {
 			clear := make(chan bool)
 
 			start := func() {
-				i := -1
+				i := 0
 				go func() {
 					for {
 						select {
