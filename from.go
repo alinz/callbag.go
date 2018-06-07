@@ -49,7 +49,3 @@ func FromRange(from, to int) Source {
 		}
 	}
 }
-
-func FromRangeChan(from, to int) Source {
-
-}
