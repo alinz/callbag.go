@@ -5,7 +5,7 @@ package callbag
 // for each value from the callbag source. Works on either pullable or
 // listenable sources.
 //
-func Scan(reducer func(prev interface{}, curr interface{}) interface{}, seed interface{}) Transform {
+func Scan(reducer func(prev Value, curr Value) Value, seed Value) Transform {
 	return func(source Source) Source {
 		return func(p Payload) {
 			switch v := p.(type) {

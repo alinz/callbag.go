@@ -15,7 +15,7 @@ package callbag
 // 			}),
 // 		)
 //
-func Filter(cond func(val interface{}) bool) Transform {
+func Filter(cond func(val Value) bool) Transform {
 	return func(source Source) Source {
 		return func(p Payload) {
 			var talkback Source

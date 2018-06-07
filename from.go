@@ -2,7 +2,7 @@ package callbag
 
 // FromIter converts list of items to a callbag pullable source
 //
-func FromIter(arr ...interface{}) Source {
+func FromIter(arr ...Value) Source {
 	return func(p Payload) {
 		switch v := p.(type) {
 		case Greets:

@@ -15,7 +15,7 @@ func Combine(sources ...Source) Source {
 
 			if n == 0 {
 				sink(NewGreets(func(p Payload) {}))
-				sink(NewData(make([]interface{}, 0)))
+				sink(NewData(make([]Value, 0)))
 				sink(NewTerminate(nil))
 				return
 			}
@@ -24,7 +24,7 @@ func Combine(sources ...Source) Source {
 			Nd := n
 			Ne := n
 
-			vals := make([]interface{}, n)
+			vals := make([]Value, n)
 			sourceTalkbacks := make([]Source, n)
 
 			var talkback Source = func(p Payload) {
@@ -60,7 +60,7 @@ func Combine(sources ...Source) Source {
 							}
 							vals[i] = v.Value()
 							if _Nd == 0 {
-								arr := make([]interface{}, n)
+								arr := make([]Value, n)
 								for j := 0; j < n; j++ {
 									arr[j] = vals[j]
 								}

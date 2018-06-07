@@ -7,7 +7,7 @@ import "sync"
 //
 // NOTE: It will wait until source stops sending data.
 //
-func Observe(op func(val interface{})) Sink {
+func Observe(op func(val Value)) Sink {
 	return func(source Source) {
 		done := make(chan struct{}, 1)
 		once := sync.Once{}

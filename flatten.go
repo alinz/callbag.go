@@ -14,7 +14,7 @@ func Flatten() Transform {
 		var outerTalkback Source
 		var innerTalkback Source
 
-		isNil := func(val interface{}) bool {
+		isNil := func(val Value) bool {
 			return val == nil || reflect.ValueOf(val).IsNil()
 		}
 

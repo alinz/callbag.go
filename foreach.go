@@ -5,7 +5,7 @@ package callbag
 // NOTE: If you want to iterate over listenable sources, use
 // Observe instead
 //
-func ForEach(op func(interface{})) Sink {
+func ForEach(op func(Value)) Sink {
 	return func(source Source) {
 		var talkback Source
 

@@ -1,5 +1,11 @@
 package callbag
 
+// Value is an alias
+// Note: Not using it for refactor but as a way to
+// make the callbag generic :)
+//
+type Value = interface{}
+
 // Payload is a interface which is beening used in
 // Greets, Data and Terminate it only carries Type which
 // is protocol value of the types.
@@ -36,7 +42,7 @@ type Terminate interface {
 //
 type Data interface {
 	Payload
-	Value() interface{}
+	Value() Value
 }
 
 type greets struct {
@@ -52,14 +58,14 @@ func (g *greets) Source() Source {
 }
 
 type data struct {
-	value interface{}
+	value Value
 }
 
 func (d *data) Type() int {
 	return 1
 }
 
-func (d *data) Value() interface{} {
+func (d *data) Value() Value {
 	return d.value
 }
 
@@ -81,7 +87,7 @@ func NewGreets(source Source) Payload {
 }
 
 // NewData creates a new Data interface based on given value
-func NewData(value interface{}) Payload {
+func NewData(value Value) Payload {
 	return &data{value}
 }
 
