@@ -2,8 +2,6 @@ package callbag
 
 import "reflect"
 
-type Ali struct{}
-
 // Value is an alias
 // for simplicity and not typing interface{} over and over
 type Value = interface{}
