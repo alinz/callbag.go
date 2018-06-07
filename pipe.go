@@ -1,9 +1,5 @@
 package callbag
 
-import (
-	"reflect"
-)
-
 // Pipe is a utility function for plugging callbags together in chain.
 //
 func Pipe(cbs ...interface{}) Source {
@@ -11,7 +7,7 @@ func Pipe(cbs ...interface{}) Source {
 
 	for i := 0; i < len(cbs); i++ {
 		cb := cbs[i]
-		if cb == nil || reflect.ValueOf(cb).IsNil() {
+		if isNil(cb) {
 			panic("cb is nil")
 		}
 

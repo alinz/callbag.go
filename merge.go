@@ -1,7 +1,5 @@
 package callbag
 
-import "reflect"
-
 // Merge is a Callbag factory that merges data from multiple callbag sources.
 // Works well with listenable sources, and while it may work for some pullable sources,
 // it is only designed for listenable sources.
@@ -22,7 +20,7 @@ func Merge(sources ...Source) Source {
 					return
 				}
 				for _, sourceTalkback := range sourceTalkbacks {
-					if !reflect.ValueOf(sourceTalkback).IsNil() {
+					if !isNil(sourceTalkback) {
 						sourceTalkback(p)
 					}
 				}

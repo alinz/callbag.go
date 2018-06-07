@@ -1,7 +1,5 @@
 package callbag
 
-import "reflect"
-
 // Flatten is a Callbag operator that flattens a higher-order callbag source.
 // Like RxJS "switch" or xstream "flatten".
 //
@@ -13,10 +11,6 @@ func Flatten() Transform {
 		var outerEnded bool
 		var outerTalkback Source
 		var innerTalkback Source
-
-		isNil := func(val Value) bool {
-			return val == nil || reflect.ValueOf(val).IsNil()
-		}
 
 		talkback := func(p Payload) {
 			switch v := p.(type) {

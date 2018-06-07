@@ -1,7 +1,6 @@
 package callbag
 
 import (
-	"reflect"
 	"time"
 )
 
@@ -66,10 +65,6 @@ func PausableInterval(period time.Duration) Source {
 		var i int
 		var clear func()
 
-		isClearNil := func() bool {
-			return clear == nil || reflect.ValueOf(clear).IsNil()
-		}
-
 		resume := func() {
 			clear = setInterval(func() {
 				sink(NewData(i))
@@ -78,7 +73,7 @@ func PausableInterval(period time.Duration) Source {
 		}
 
 		pause := func() {
-			if !isClearNil() {
+			if !isNil(clear) {
 				clear()
 				clear = nil
 			}
@@ -91,14 +86,14 @@ func PausableInterval(period time.Duration) Source {
 			sink(NewGreets(func(p Payload) {
 				switch p.(type) {
 				case Data:
-					if isClearNil() {
+					if isNil(clear) {
 						resume()
 					} else {
 						pause()
 						clear = nil
 					}
 				case Terminate:
-					if isClearNil() {
+					if isNil(clear) {
 						pause()
 					}
 				}

@@ -1,10 +1,16 @@
 package callbag
 
+import "reflect"
+
+type Ali struct{}
+
 // Value is an alias
-// Note: Not using it for refactor but as a way to
-// make the callbag generic :)
-//
+// for simplicity and not typing interface{} over and over
 type Value = interface{}
+
+func isNil(val interface{}) bool {
+	return val == nil || reflect.ValueOf(val).IsNil()
+}
 
 // Payload is a interface which is beening used in
 // Greets, Data and Terminate it only carries Type which
