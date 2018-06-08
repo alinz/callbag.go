@@ -1,23 +1,31 @@
 package callbag
 
-// FromIter converts list of items to a callbag pullable source
+// FromValues converts list of items to a callbag pullable source
 //
-func FromIter(arr ...Value) Source {
+func FromValues(values ...Value) Source {
+	var sink Source
+	var isPumping bool
+	var done bool
+
+	pump := func() {
+		for _, value := range values {
+			sink(NewData(value))
+		}
+		done = true
+		sink(NewTerminate(nil))
+	}
+
 	return func(p Payload) {
 		switch v := p.(type) {
 		case Greets:
-			i := 0
-			sink := v.Source()
+			sink = v.Source()
 
 			sink(NewGreets(func(p Payload) {
 				switch p.(type) {
 				case Data:
-					if i < len(arr) {
-						val := arr[i]
-						i++
-						sink(NewData(val))
-					} else {
-						sink(NewTerminate(nil))
+					if !isPumping && !done {
+						isPumping = true
+						pump()
 					}
 				}
 			}))
@@ -28,19 +36,30 @@ func FromIter(arr ...Value) Source {
 	}
 }
 
+// FromRange generate numbers from a number to a number to a callbag pullable source
+//
 func FromRange(from, to int) Source {
+	var sink Source
+	var isPumping bool
+	var i int
+
+	pump := func() {
+		for i = from; i < to; i++ {
+			sink(NewData(i))
+		}
+		sink(NewTerminate(nil))
+	}
+
 	return func(p Payload) {
 		switch v := p.(type) {
 		case Greets:
-			sink := v.Source()
+			sink = v.Source()
 			sink(NewGreets(func(p Payload) {
 				switch p.(type) {
 				case Data:
-					if from < to {
-						from++
-						sink(NewData(from))
-					} else {
-						sink(NewTerminate(nil))
+					if !isPumping && i != to {
+						isPumping = true
+						pump()
 					}
 				}
 			}))

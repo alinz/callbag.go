@@ -7,7 +7,8 @@ This is an attempt to build [Callbag](https://github.com/callbag/callbag) protoc
 At the moment the following functions have been implemented
 
 - [x] Pipe
-- [x] FromIter
+- [x] FromValues
+- [x] FromRange
 - [x] ForEach
 - [x] Map
 - [x] Filter

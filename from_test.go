@@ -7,8 +7,8 @@ import (
 	cb "github.com/alinz/go-callbag"
 )
 
-func TestFromIterBasic(t *testing.T) {
-	source := cb.FromIter("1", "2", "3", "4")
+func TestFromValuesBasic(t *testing.T) {
+	source := cb.FromValues("1", "2", "3", "4")
 
 	expectedProcess := []string{
 		"greets",
@@ -53,7 +53,6 @@ func TestFromIterBasic(t *testing.T) {
 }
 
 func TestFromRangeBlowupStack(t *testing.T) {
-
 	max := 1000000
 	source := cb.FromRange(0, max)
 	i := 0
