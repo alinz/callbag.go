@@ -9,6 +9,9 @@ At the moment the following functions have been implemented
 - [x] Pipe
 - [x] FromValues
 - [x] FromRange
+- [x] FromBytes
+- [x] FromStrings
+- [x] FromReader
 - [x] ForEach
 - [x] Map
 - [x] Filter
@@ -23,6 +26,7 @@ At the moment the following functions have been implemented
 - [x] Concat
 - [x] Combine
 - [x] Skip
+- [x] ToWriter
 
 Please take a look at example folder.
 
