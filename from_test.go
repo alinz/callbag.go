@@ -73,3 +73,24 @@ func TestFromRangeBlowupStack(t *testing.T) {
 		t.Errorf("failed to reach %d, got until %d", max, i)
 	}
 }
+
+func BenchmarkFromRange(b *testing.B) {
+	// run the Fib function b.N times
+	for n := 0; n < b.N; n++ {
+		max := 10
+		source := cb.FromRange(0, max)
+		i := 0
+
+		var talkback cb.Source
+		source(cb.NewGreets(func(p cb.Payload) {
+			switch v := p.(type) {
+			case cb.Greets:
+				talkback = v.Source()
+				talkback(cb.NewData(nil))
+			case cb.Data:
+				i++
+				talkback(cb.NewData(nil))
+			}
+		}))
+	}
+}
