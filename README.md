@@ -1,6 +1,6 @@
-<center>
+<p align="center">
 <img height="200" src="./logo.png" alt="Gopher With Callbag"/>
-</center>
+</p>
 
 # Callbag.go
 
